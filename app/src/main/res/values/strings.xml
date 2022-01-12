@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">सब्जीवाला</string>
+    <string name="motto">स्थानीय ग्राहकों से ऑर्डर प्राप्त करें और उनके दरवाजे पर सब्जियां पहुंचाएं।</string>
+    <string name="login">लॉगिन</string>
+    <string name="password">पासवर्ड</string>
+    <string name="type_your_password">अपना पासवर्ड डालें</string>
+    <string name="do_login">लॉग इन करें</string>
+    <string name="online">ऑनलाइन</string>
+    <string name="offline">ऑफ़लाइन</string>
+    <string name="orders">डैशबोर्ड</string>
+    <string name="show_new_orders">नए आर्डर देखें</string>
+    <string name="today">आज</string>
+    <string name="mobile">मोबाइल</string>
+    <string name="enter_mobile_no">अपना मोबाइल डालें</string>
+    <string name="total_order">टोटल आर्डर</string>
+    <string name="handpick_order">हैंडपिक्ड आर्डर</string>
+    <string name="left_out_orders">बचे हुए आर्डर</string>
+    <string name="rejected_orders">रद्द आर्डर</string>
+    <string name="vegitable_summary">सब्जी सूची देखें</string>
+    <string name="view_old_orders">पुराने आर्डर देखें</string>
+    <string name="view_new_orders">नए आर्डर देखें</string>
+    <string name="old_orders">पुराने आर्डर</string>
+    <string name="new_orders">नए आर्डर</string>
+    <string name="title_activity_order_map">Map</string>
+    <string name="api_key">AIzaSyDicF68Wm6vUjNFcQs3UehVImPPJa_wYTM</string>
+    <string name="wrong">उफ़! कुछ गलत हुआ।\n कृपया बाद में पुन: प्रयास करें।🙂</string>
+
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Activities.InventoryActivity">
+    <LinearLayout
+        android:id="@+id/header"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+
+            android:padding="4dp"
+            android:id="@+id/ivBack"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/ivBack"
+            android:fontFamily="@font/montserrat"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Your Inventory"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/ivBack"
+        android:fontFamily="@font/poppins_semibold"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="All Products"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+    <View
+        android:layout_margin="16dp"
+        android:background="@color/grey"
+        android:alpha=".3"
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/llEmpty"
+
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:padding="64dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInventory"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_inventory" />
+
+
+
+
+</LinearLayout>
