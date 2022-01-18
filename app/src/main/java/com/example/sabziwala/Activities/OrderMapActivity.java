@@ -399,18 +399,52 @@ public class OrderMapActivity extends FragmentActivity implements OnMapReadyCall
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                long minutes = 15 - Utils.getDifference(Utils.toDate(getOrdersResponseData.getSchedule_date(), getOrdersResponseData.getSchedule_time()));
-                long seconds = (Utils.getDifferenceSec(Utils.toDate(getOrdersResponseData.getSchedule_date(), getOrdersResponseData.getSchedule_time())));
-                tvTimeLeft.setText("Accept within " + minutes + ":" + ((900 - seconds) - 60) % 60 + " minutes");
-                timeProgress.setProgress((int) (seconds * .12), true);
-                if (900 - seconds < 180) {
-                    timeProgress.setIndicatorColor(getResources().getColor(R.color.red, null));
+                long seconds = 0;
+                long minutes = 0;
+                long hours = 0;
+                long days = 0;
+                if (getOrdersResponseData.getSchedule_date() == null) {
+                    minutes = Utils.getDifference(Utils.toDate(getOrdersResponseData.getSchedule_date(), getOrdersResponseData.getSchedule_time()));
+                    seconds = Utils.getDifferenceSec(Utils.toDate(getOrdersResponseData.getSchedule_date(), getOrdersResponseData.getSchedule_time()));
+                    hours = Utils.getDifferenceHour(Utils.toDate(getOrdersResponseData.getSchedule_date(), getOrdersResponseData.getSchedule_time()));
+                    days = Utils.getDifferenceDays(Utils.toDate(getOrdersResponseData.getSchedule_date(), getOrdersResponseData.getSchedule_time()));
+                    tvOrderType.setText(R.string.scheduled_order);
+                } else {
+                    minutes = Utils.getDifference(Utils.toDate(getOrdersResponseData.getCreated_date().split(" ")[0], getOrdersResponseData.getCreated_date().split(" ")[0]));
+                    seconds = Utils.getDifferenceSec(Utils.toDate(getOrdersResponseData.getCreated_date().split(" ")[0], getOrdersResponseData.getCreated_date().split(" ")[0]));
+                    hours = Utils.getDifferenceHour(Utils.toDate(getOrdersResponseData.getCreated_date().split(" ")[0], getOrdersResponseData.getCreated_date().split(" ")[0]));
+                    days = Utils.getDifferenceDays(Utils.toDate(getOrdersResponseData.getCreated_date().split(" ")[0], getOrdersResponseData.getCreated_date().split(" ")[1]));
+                    tvOrderType.setText(R.string.recent_order);
+
                 }
+                String timeleft = "";
+                if (Math.abs(days) > 1) {
+                    timeleft = Math.abs(days) + "days, " + Math.abs(hours % 12) + "hours";
+
+                } else if (Math.abs(hours) >= 1) {
+                    timeleft = Math.abs(hours) + "hours, " + Math.abs(minutes % 60) + "minutes";
+
+                } else if (Math.abs(minutes) >= 1) {
+                    timeleft = Math.abs(minutes) + "minutes, " + Math.abs(seconds % 60) + "seconds";
+                } else {
+                    timeleft = seconds % 60 + "seconds";
+
+                }
+
+                tvTimeLeft.setText(timeleft);
+
+
                 if (getOrdersResponseData.getOrder_status().equals("5"))
-                    if (Utils.getDifferenceSec(Utils.toDate(getOrdersResponseData.getSchedule_date(), getOrdersResponseData.getSchedule_time())) > 900) {
-                        handle(getOrdersResponseData.getOrder_id());
+                    if (seconds > 300) {
+                        connectorChangeStatusHandpickReject(getOrdersResponseData.getOrder_id());
+                        getOrdersResponseData.setOrder_status("9");
                         h.removeCallbacks(this);
+                    } else if (seconds > 0) {
+
+                        int progress = (int) (seconds * 0.3);
+                        timeProgress.setProgress(progress);
                     }
+
                 h.postDelayed(this, 1000);
             }
         }, 1000);

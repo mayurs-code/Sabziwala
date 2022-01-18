@@ -102,25 +102,25 @@ public class Utils {
 
     }
     public static long getDifference(Date date) {
-        long diffInMillies = Math.abs(new Date().getTime() - date.getTime());
+        long diffInMillies = (new Date().getTime() - date.getTime());
         long diff = TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS);
         return diff;
 
 
     }public static long getDifferenceSec(Date date) {
-        long diffInMillies = Math.abs(new Date().getTime() - date.getTime());
+        long diffInMillies = (new Date().getTime() - date.getTime());
         long diff = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);
         return diff;
 
 
     }public static long getDifferenceHour(Date date) {
-        long diffInMillies = Math.abs(new Date().getTime() - date.getTime());
+        long diffInMillies = (new Date().getTime() - date.getTime());
         long diff = TimeUnit.HOURS.convert(diffInMillies, TimeUnit.MILLISECONDS);
         return diff;
 
 
     }public static long getDifferenceDays(Date date) {
-        long diffInMillies = Math.abs(new Date().getTime() - date.getTime());
+        long diffInMillies = (new Date().getTime() - date.getTime());
         long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
         return diff;
 

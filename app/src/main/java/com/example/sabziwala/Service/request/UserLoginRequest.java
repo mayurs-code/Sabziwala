@@ -5,6 +5,16 @@ public class UserLoginRequest {
     String password;
     String phone_number;
 
+    public String getFcm_token() {
+        return fcm_token;
+    }
+
+    public void setFcm_token(String fcm_token) {
+        this.fcm_token = fcm_token;
+    }
+
+    String fcm_token;
+
     public UserLoginRequest() {
         this.device_type="2";
     }

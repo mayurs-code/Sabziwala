@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.sabziwala.Activities.DailyListActivity;
 import com.example.sabziwala.Activities.HomeActivity;
 import com.example.sabziwala.Activities.InventoryActivity;
+import com.example.sabziwala.Activities.SplashActivity;
 import com.example.sabziwala.R;
 import com.example.sabziwala.Service.OnRequestResponseListener;
 import com.example.sabziwala.Service.communicator.Connector;
@@ -246,6 +247,20 @@ public class DashboardFragment extends Fragment implements OnRequestResponseList
     public void onNoConnectivityException(String message) {
 
         if (message.equals("-1")) {
+            dialogFragment.show(getChildFragmentManager(), "" + Constants.incrementalID++);
+        }
+        if (message.equals("-2")) {
+            try {
+                AppSettings.clearPrefs(getActivity());
+                Intent intent = new Intent(getActivity(), SplashActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                getActivity().finish();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            } catch (Exception e) {
+
+            }
+
             dialogFragment.show(getChildFragmentManager(), "" + Constants.incrementalID++);
         }
         if (message.equals("1")) {

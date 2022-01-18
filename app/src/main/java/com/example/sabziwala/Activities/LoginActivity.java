@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sabziwala.Fragments.NoInternetFragment;
@@ -22,6 +23,9 @@ import com.example.sabziwala.Service.response.WebResponse;
 import com.example.sabziwala.Utilities.AppSettings;
 import com.example.sabziwala.Utilities.Constants;
 import com.example.sabziwala.Utilities.Utils;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginActivity extends AppCompatActivity implements OnRequestResponseListener {
 
@@ -51,7 +55,13 @@ public class LoginActivity extends AppCompatActivity implements OnRequestRespons
 
                     return;
                 }
-                connectorInit(etPhone.getText().toString().trim(), etPassword.getText().toString().trim());
+                FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        connectorInit(etPhone.getText().toString().trim(), etPassword.getText().toString().trim(),task.getResult());
+
+                    }
+                });
             }
         });
 
@@ -64,11 +74,12 @@ public class LoginActivity extends AppCompatActivity implements OnRequestRespons
 
     }
 
-    private void connectorInit(String phoneNumber, String password) {
+    private void connectorInit(String phoneNumber, String password, String result) {
 //        Connector connector = Connector.getConnector();
         Connector connector = new Connector();        UserLoginRequest request = new UserLoginRequest();
         request.setPhone_number(phoneNumber);
         request.setPassword(password);
+        request.setFcm_token(result);
         ServerCommunicator.userLogin(connector, request);
         connector.setOnRequestResponseListener(this);
     }

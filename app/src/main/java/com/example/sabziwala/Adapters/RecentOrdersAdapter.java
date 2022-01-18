@@ -30,6 +30,7 @@ import com.example.sabziwala.Service.response.GetOrdersResponseData;
 import com.example.sabziwala.Service.response.UpdateOrderStatusResponse;
 import com.example.sabziwala.Service.response.WebErrorResponse;
 import com.example.sabziwala.Service.response.WebResponse;
+import com.example.sabziwala.Utilities.AnimationClass;
 import com.example.sabziwala.Utilities.AppLogger;
 import com.example.sabziwala.Utilities.AppSettings;
 import com.example.sabziwala.Utilities.Utils;
@@ -76,6 +77,7 @@ public class RecentOrdersAdapter extends RecyclerView.Adapter<RecentOrdersAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        AnimationClass.setAnimationParent(holder.itemView);
 
         holder.tvAddress.setText(data.get(position).getOther_address());
         holder.tvScheduleTime.setText(data.get(position).getSchedule_date() + " " + data.get(position).getSchedule_time());
@@ -83,24 +85,66 @@ public class RecentOrdersAdapter extends RecyclerView.Adapter<RecentOrdersAdapte
         Location location;
         LatLng latLng = new LatLng(Double.parseDouble(data.get(position).getLat()), Double.parseDouble(data.get(position).getLag()));
         holder.tvTotalDistance.setText(String.format("%.2f", getKmFromLatLong(latLng)) + " KM");
+        if (data.get(position).getSchedule_date() == null) {
+            holder.tvOrderType.setText(R.string.recent_order);
+        } else {
+            holder.tvOrderType.setText(R.string.recent_order);
+
+        }
 
 //        holder.tvOrderType.setText(data.get(position).getOrder_type());
         Handler h = new Handler();
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                long minutes = 15 - Utils.getDifference(Utils.toDate(data.get(position).getSchedule_date(), data.get(position).getSchedule_time()));
-                long seconds = (Utils.getDifferenceSec(Utils.toDate(data.get(position).getSchedule_date(), data.get(position).getSchedule_time())));
-                holder.tvTimeLeft.setText("Accept within " + minutes + ":" + ((900 - seconds) - 60) % 60 + " minutes");
-                holder.timeProgress.setProgress((int) (seconds * .12), true);
-                if (900 - seconds < 180) {
-                    holder.timeProgress.setIndicatorColor(context.getResources().getColor(R.color.red, null));
+                long seconds = 0;
+                long minutes = 0;
+                long hours = 0;
+                long days = 0;
+                if (data.get(position).getSchedule_date() != null) {
+                    minutes = Utils.getDifference(Utils.toDate(data.get(position).getSchedule_date(), data.get(position).getSchedule_time()));
+                    seconds = Utils.getDifferenceSec(Utils.toDate(data.get(position).getSchedule_date(), data.get(position).getSchedule_time()));
+                    hours = Utils.getDifferenceHour(Utils.toDate(data.get(position).getSchedule_date(), data.get(position).getSchedule_time()));
+                    days = Utils.getDifferenceDays(Utils.toDate(data.get(position).getSchedule_date(), data.get(position).getSchedule_time()));
+                    holder.tvOrderType.setText(R.string.scheduled_order);
+                } else {
+                    minutes = Utils.getDifference(Utils.toDate(data.get(position).getCreated_date().split(" ")[0], data.get(position).getCreated_date().split(" ")[1]));
+                    seconds = Utils.getDifferenceSec(Utils.toDate(data.get(position).getCreated_date().split(" ")[0], data.get(position).getCreated_date().split(" ")[1]));
+                    hours = Utils.getDifferenceHour(Utils.toDate(data.get(position).getCreated_date().split(" ")[0], data.get(position).getCreated_date().split(" ")[1]));
+                    days = Utils.getDifferenceDays(Utils.toDate(data.get(position).getCreated_date().split(" ")[0], data.get(position).getCreated_date().split(" ")[1]));
+                    holder.tvOrderType.setText(R.string.recent_order);
+
                 }
+                String timeleft = "";
+                if (Math.abs(days) > 1) {
+                    timeleft = Math.abs(days) + "days, " + Math.abs(hours % 12) + "hours";
+
+                } else if (Math.abs(hours) >= 1) {
+                    timeleft = Math.abs(hours) + "hours, " + Math.abs(minutes % 60) + "minutes";
+
+                } else if (Math.abs(minutes) >= 1) {
+                    timeleft = Math.abs(minutes) + "minutes, " + Math.abs(seconds % 60) + "seconds";
+                } else {
+                    timeleft = seconds % 60 + "seconds";
+
+                }
+                holder.tvTimeLeft.setText(timeleft);
+
+
                 if (data.get(position).getOrder_status().equals("5"))
-                    if (Utils.getDifferenceSec(Utils.toDate(data.get(position).getSchedule_date(), data.get(position).getSchedule_time())) > 900) {
+                    if (seconds > 300) {
                         handler.handle(data.get(position).getOrder_id());
+                        data.get(position).setOrder_status("9");
+                        holder.llAcceptReject.setVisibility(View.GONE);
+                        holder.mbGotoMap.setVisibility(View.GONE);
+                        holder.tvOrderRejected.setVisibility(View.VISIBLE);
                         h.removeCallbacks(this);
+                    } else if (seconds > 0) {
+
+                        int progress = (int) (seconds * 0.3);
+                        holder.timeProgress.setProgress(progress);
                     }
+
                 h.postDelayed(this, 1000);
             }
         }, 1000);
@@ -143,26 +187,31 @@ public class RecentOrdersAdapter extends RecyclerView.Adapter<RecentOrdersAdapte
                 holder.llAcceptReject.setVisibility(View.VISIBLE);
                 holder.mbGotoMap.setVisibility(View.GONE);
                 holder.tvOrderRejected.setVisibility(View.GONE);
+                holder.tvOrderDone.setVisibility(View.GONE);
                 break;
             case "6":
                 holder.llAcceptReject.setVisibility(View.GONE);
                 holder.mbGotoMap.setVisibility(View.VISIBLE);
                 holder.tvOrderRejected.setVisibility(View.GONE);
+                holder.tvOrderDone.setVisibility(View.GONE);
                 break;
             case "7":
                 holder.llAcceptReject.setVisibility(View.GONE);
                 holder.mbGotoMap.setVisibility(View.VISIBLE);
                 holder.tvOrderRejected.setVisibility(View.GONE);
+                holder.tvOrderDone.setVisibility(View.GONE);
                 break;
             case "8":
                 holder.llAcceptReject.setVisibility(View.GONE);
                 holder.mbGotoMap.setVisibility(View.GONE);
                 holder.tvOrderRejected.setVisibility(View.GONE);
+                holder.tvOrderDone.setVisibility(View.VISIBLE);
                 break;
             case "9":
                 holder.llAcceptReject.setVisibility(View.GONE);
                 holder.mbGotoMap.setVisibility(View.GONE);
                 holder.tvOrderRejected.setVisibility(View.VISIBLE);
+                holder.tvOrderDone.setVisibility(View.GONE);
                 break;
 
         }
@@ -254,6 +303,7 @@ public class RecentOrdersAdapter extends RecyclerView.Adapter<RecentOrdersAdapte
         TextView tvOrderRejected;
         MaterialCardView mcOrderCard;
         ImageView ivUserImage;
+        ImageView tvOrderDone;
         MaterialButton mbCancel;
         MaterialButton mbAccept;
         MaterialButton mbGotoMap;
@@ -272,6 +322,7 @@ public class RecentOrdersAdapter extends RecyclerView.Adapter<RecentOrdersAdapte
             ivUserImage = itemView.findViewById(R.id.ivUserImage);
             llAcceptReject = itemView.findViewById(R.id.llAcceptReject);
             mbCancel = itemView.findViewById(R.id.mbCancel);
+            tvOrderDone = itemView.findViewById(R.id.tvOrderDone);
             mbAccept = itemView.findViewById(R.id.mbAccept);
             tvOrderRejected = itemView.findViewById(R.id.tvOrderRejected);
             mbGotoMap = itemView.findViewById(R.id.mbGotoMap);

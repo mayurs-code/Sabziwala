@@ -1,0 +1,100 @@
+{
+  "project_info": {
+    "project_number": "497922968500",
+    "project_id": "hara-bazaar-mobile-app",
+    "storage_bucket": "hara-bazaar-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497922968500:android:ede20a6dce50c82b0b80e1",
+        "android_client_info": {
+          "package_name": "com.example.sabziwala"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497922968500-ikortvor3eq18mf2r2ngbj8pcfl569iq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sabziwala",
+            "certificate_hash": "1999b4f64f06728f34b6c14c4da16aaaac86249e"
+          }
+        },
+        {
+          "client_id": "497922968500-ngp8mh62hd1clnrlhu4c0nuibb1c2nsn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNoo5BlhZNIz2_e11G0Oygc4lCTb5SpyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497922968500-ngp8mh62hd1clnrlhu4c0nuibb1c2nsn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497922968500:android:c7441a1d3de3f8b20b80e1",
+        "android_client_info": {
+          "package_name": "com.harabazar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497922968500-cb875dbjcthjmti24ea81ivuhfo7kfm1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.harabazar",
+            "certificate_hash": "8edafa08ed655753a2172ea028502822db2fa818"
+          }
+        },
+        {
+          "client_id": "497922968500-ervc4l9v1dt9pnink87f3d1h5ekklq3o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.harabazar",
+            "certificate_hash": "1999b4f64f06728f34b6c14c4da16aaaac86249e"
+          }
+        },
+        {
+          "client_id": "497922968500-rbnkn7idiq0vmo2f13ti061j7neiekvr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.harabazar",
+            "certificate_hash": "92d4b690eedeec2a4c635eadf0ba049ea0b24333"
+          }
+        },
+        {
+          "client_id": "497922968500-ngp8mh62hd1clnrlhu4c0nuibb1c2nsn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNoo5BlhZNIz2_e11G0Oygc4lCTb5SpyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497922968500-ngp8mh62hd1clnrlhu4c0nuibb1c2nsn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

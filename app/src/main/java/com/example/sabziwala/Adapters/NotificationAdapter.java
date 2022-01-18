@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sabziwala.R;
 import com.example.sabziwala.Service.response.NotificationResponseData;
+import com.example.sabziwala.Utilities.AnimationClass;
 import com.example.sabziwala.Utilities.Utils;
 
 import java.util.Date;
@@ -36,6 +37,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        AnimationClass.setAnimationParent(viewHolder.itemView);
+
         viewHolder.tvTitle.setText(data.get(position).getTitle());
         viewHolder.tvSubtitle.setText(data.get(position).getBody());
         Date date = Utils.toDate(data.get(position).getCreated_date().split(" ")[0], data.get(position).getCreated_date().split(" ")[1]);

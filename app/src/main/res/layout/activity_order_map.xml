@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="Show Both"
+                android:text="@string/show_both"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -100,7 +100,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
                         android:padding="8dp"
-                        android:text="Mayur Tantwar"
+                        android:text=" "
                         android:textColor="@color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -138,8 +138,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
                             android:layout_weight="1"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Total Distance"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/total_distance"
                             android:textColor="@color/grey"
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -151,7 +151,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:fontFamily="@font/montserrat"
-                            android:text="2.1 KM"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -169,8 +169,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:layout_weight="1"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Order type"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/order_type"
                             android:textColor="@color/grey"
                             android:textSize="10dp"
                             android:textStyle="bold" />
@@ -182,7 +182,7 @@
                             android:layout_gravity="end"
                             android:layout_weight="1"
                             android:fontFamily="@font/montserrat"
-                            android:text="Schedule"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -254,8 +254,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/montserrat"
-                                android:text="Your Location"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="@string/your_location"
                                 android:textColor="@color/black"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -267,7 +267,7 @@
                                 android:layout_gravity="start"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/montserrat"
-                                android:text="Location "
+                                android:text="  "
                                 android:textColor="@color/grey"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -303,8 +303,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/montserrat"
-                                android:text="Handpick Location"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="@string/handpick_location"
                                 android:textColor="@color/black"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -316,7 +316,7 @@
                                 android:layout_gravity="start"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/montserrat"
-                                android:text="User Location"
+                                android:text=" "
                                 android:textColor="@color/grey"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -343,9 +343,9 @@
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimary"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:padding="16dp"
-                        android:text="Start Direction"
+                        android:text="@string/start_direction"
                         app:cornerRadius="12dp" />
 
                 </LinearLayout>
@@ -364,9 +364,9 @@
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimary"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:padding="16dp"
-                        android:text="Reached On Location"
+                        android:text="@string/reached"
                         app:cornerRadius="12dp" />
 
                 </LinearLayout>
@@ -385,9 +385,9 @@
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimary"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:padding="16dp"
-                        android:text="Handpick Done"
+                        android:text="@string/handpick_done"
                         app:cornerRadius="12dp" />
 
                 </LinearLayout>
@@ -414,9 +414,9 @@
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/black"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:padding="16dp"
-                        android:text="Cancel"
+                        android:text="@string/cancel"
                         app:cornerRadius="12dp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -426,9 +426,9 @@
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimary"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:padding="16dp"
-                        android:text="Accept"
+                        android:text="@string/accept"
                         app:cornerRadius="12dp" />
                 </LinearLayout>
                 <TextView

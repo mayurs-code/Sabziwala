@@ -24,5 +24,19 @@
     <string name="title_activity_order_map">Map</string>
     <string name="api_key">AIzaSyDicF68Wm6vUjNFcQs3UehVImPPJa_wYTM</string>
     <string name="wrong">उफ़! कुछ गलत हुआ।\n कृपया बाद में पुन: प्रयास करें।🙂</string>
+    <string name="recent_order">हाल ही की ऑर्डर</string>
+    <string name="scheduled_order">अनुसूचित ऑर्डर</string>
+    <string name="order_type">ऑर्डर प्रकार</string>
+    <string name="total_distance">कुल दूरी</string>
+    <string name="scheduled_time">निधारित समय</string>
+    <string name="handpick_location">हैंडपिक स्थान</string>
+    <string name="accept">स्वीकार करें</string>
+    <string name="cancel">इसे रद्द करें</string>
+    <string name="Direction">दिशा दिखाएं</string>
+    <string name="your_location">आपका वर्तमान स्थान</string>
+    <string name="start_direction">दिशा शुरू करें</string>
+    <string name="reached">पहुंच गए स्थान पे</string>
+    <string name="handpick_done">हैंडपिक हो गया</string>
+    <string name="show_both">दोनों दिखाएँ</string>
 
 </resources>

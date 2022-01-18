@@ -160,7 +160,11 @@ public class SettingFragment extends Fragment implements OnRequestResponseListen
                 context.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        dialogFragment.dismiss();
+                        try {
+                            dialogFragment.dismiss();
+                        } catch (Exception e) {
+
+                        }
                         alreadyLoaded = false;
                         setData(responseBody.getData());
 

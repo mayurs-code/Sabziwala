@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.sabziwala.R;
 import com.example.sabziwala.Service.response.GetInventoryResponseData;
+import com.example.sabziwala.Utilities.AnimationClass;
 import com.example.sabziwala.Utilities.Constants;
 
 import java.util.List;
@@ -36,6 +37,8 @@ public class InventoryProductsAdapter extends RecyclerView.Adapter<InventoryProd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        AnimationClass.setAnimationParent(holder.itemView);
+
         holder.tvName.setText(data.get(position).getName());
         holder.tvVariant.setText(data.get(position).getProduct_variant());
         holder.tvPrice.setText("₹"+data.get(position).getMin_amount() + "- ₹" + data.get(position).getMax_amount());

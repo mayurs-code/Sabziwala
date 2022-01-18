@@ -2,6 +2,7 @@ package com.example.sabziwala.Activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -60,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements OnRequestResponse
 
     public static BottomNavigationView bottomNavigationView;
     final Handler handler = new Handler();
-    final int delay = 60000;
+    final int delay = 6000;
     Fragment selectedFragment = null;
     Switch status_switch;
     TextView tvAddress;
@@ -105,6 +106,12 @@ public class HomeActivity extends AppCompatActivity implements OnRequestResponse
         if(!alreadyLoaded)
             loadingFragment.show(getSupportFragmentManager(), "");
         methods();
+    }
+
+    @Override
+    protected void onDestroy() {
+        handler.removeCallbacks(coordsRunnable);
+        super.onDestroy();
     }
 
     private void repeatedMethod() {
@@ -367,7 +374,21 @@ public class HomeActivity extends AppCompatActivity implements OnRequestResponse
 
         if(message.equals("-1")){
             dialogFragment.show(getSupportFragmentManager(),""+ Constants.incrementalID++);
-        }if(message.equals("1")){
+        }if (message.equals("-2")) {
+            try {
+                AppSettings.clearPrefs(this);
+                Intent intent = new Intent(this, SplashActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            } catch (Exception e) {
+
+            }
+
+            dialogFragment.show(getSupportFragmentManager(), "" + Constants.incrementalID++);
+        }
+        if(message.equals("1")){
             try{
                 dialogFragment.dismiss();
             }catch (Exception e){

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.sabziwala.R;
 import com.example.sabziwala.Service.DailyEventHandler;
 import com.example.sabziwala.Service.response.GetInventoryResponseData;
+import com.example.sabziwala.Utilities.AnimationClass;
 import com.example.sabziwala.Utilities.Constants;
 
 import java.util.HashSet;
@@ -57,6 +59,7 @@ public class ItemDailyAdapter extends RecyclerView.Adapter<ItemDailyAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        AnimationClass.setAnimationParent(holder.itemView);
         try {
             Glide.with(context).load(Constants.FILES_URL + allData.get(position).getImage()).into(holder.ivImage);
         } catch (Exception e) {

@@ -41,6 +41,7 @@ public class AppSettings {
     public static void setUId(Context context, String paramString) {
         getPrefs(context).edit().putString("UId", paramString).commit();
     }
+
     public static String getSessionKey(Context context) {
         return getPrefs(context).getString("SessionKey", "");
     }
@@ -49,6 +50,14 @@ public class AppSettings {
         getPrefs(context).edit().putString("SessionKey", paramString).commit();
     }
 
+    public static void setNotificationCount(Context context, int paramInt) {
+        getPrefs(context).edit().putInt("notification", paramInt).commit();
+    }
+
+
+    public static int getNotificationCount(Context context) {
+        return getPrefs(context).getInt("notification", 0);
+    }
 
     public static String getFirstName(Context context) {
         return getPrefs(context).getString("firstName", null);

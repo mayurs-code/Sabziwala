@@ -137,6 +137,12 @@ public class Connector {
                     try {
                         JSONObject responseObj = new JSONObject(response.body().string());
                         AppLogger.i("TAGS", "Called From: " + onRequestResponseListener.getClass().getSimpleName() + " responseObj: " + responseObj);
+                        if(responseObj.get("status").equals(401)){
+                            AppLogger.i("TAGS", "Casssssslled From: " + onRequestResponseListener.getClass().getSimpleName() + " responseObj: " + responseObj);
+
+                            onRequestResponseListener.onNoConnectivityException("-2");
+
+                        }
                         WebResponse webResponse = (WebResponse) Utils.getGson().fromJson(responseObj.toString(), resultClass);
                         onRequestResponseListener.onHttpResponse(webResponse);
                         onRequestResponseListener.onNoConnectivityException("1");
